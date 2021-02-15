@@ -3,6 +3,7 @@ package org.launchcode.techjobs_oo.Tests;
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
+import org.w3c.dom.ls.LSOutput;
 
 import static org.junit.Assert.*;
 
@@ -44,4 +45,35 @@ public class JobTest {
         Job testJob2 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertFalse(testJob1.equals(testJob2));
     }
+
+    @Test
+    public void testToStringMethod() {
+        Job testJob3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        String toStringOutput = testJob3.toString();
+        assertTrue(toStringOutput.contains("ID: " + testJob3.getId() + "\n" +
+                "Name: " + testJob3.getName() + "\n" +
+                "Employer: " + testJob3.getEmployer() + "\n" +
+                "Location: " + testJob3.getLocation() + "\n" +
+                "Position Type: " + testJob3.getPositionType() + "\n" +
+                "Core Competency: " + testJob3.getCoreCompetency() + "\n"));
+    }
+
+    @Test
+    public void testForEmptyField() {
+        Job testJob4 = new Job("Developer", new Employer(""), new Location("Orlando"), new PositionType("Software"), new CoreCompetency("Creativity"));
+        String toStringOutput2 = testJob4.toString();
+        //System.out.println(toStringOutput2);
+        assertTrue(toStringOutput2.contains("Data not available"));
+    }
+
+    @Test
+    public void testForAllEmptyFields() {
+        Job testJob5 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        String toStringOutput3 = testJob5.toString();
+        //System.out.println(toStringOutput3);
+        assertTrue(toStringOutput3.contains("OOPS! This job does not seem to exist."));
+    }
+
+
+
 }

@@ -30,6 +30,40 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+    public String toString() {
+        String toStringOutput = "ID: " + this.id + "\n";
+        if (this.name.equals("")) {
+            toStringOutput += "Name: Data not available \n";
+        } else {
+            toStringOutput += "Name: " + this.name + "\n";
+        }
+        if (this.employer.toString().equals("")) {
+            toStringOutput += "Employer: Data not available \n";
+        } else {
+            toStringOutput += "Employer: " + this.employer + "\n";
+        }
+        if (this.location.toString().equals("")) {
+            toStringOutput += "Location: Data not available \n";
+        } else {
+            toStringOutput += "Location: " + this.location + "\n" ;
+        }
+        if (this.positionType.toString().equals("")) {
+            toStringOutput += "Position Type: Data not available \n";
+        } else {
+            toStringOutput += "Position Type: " + this.positionType + "\n";
+        }
+        if (this.coreCompetency.toString().equals("")) {
+            toStringOutput += "Core Competency: Data not available \n";
+        } else {
+            toStringOutput += "Core Competency: " + this.coreCompetency + "\n";
+        }
+        if (this.name.equals("") && this.employer.toString().equals("") && this.location.toString().equals("") && this.positionType.toString().equals("") && this.coreCompetency.toString().equals("")) {
+            toStringOutput = "OOPS! This job does not seem to exist.";
+        }
+        return toStringOutput;
+    }
+
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
@@ -49,8 +83,6 @@ public class Job {
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
-
-
     public int getId() {
         return id;
     }
